@@ -664,7 +664,7 @@ int create_http_socket(request_t* req, sock_t* server_sock, sock_t* client_sock,
         proxenet_xsnprintf(sport, sizeof(sport), "%hu", http_infos->port);
 
         /* do we forward to another proxy ? */
-        if (use_proxy) {
+        if (use_proxy && (apply_intercept_rules(http_infos)) {
                 host = cfg->proxy.host;
                 port = cfg->proxy.port;
         } else {
